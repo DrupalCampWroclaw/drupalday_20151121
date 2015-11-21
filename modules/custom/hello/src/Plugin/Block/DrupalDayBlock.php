@@ -9,6 +9,8 @@ namespace Drupal\hello_world\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 
+use Drupal\hello_world\DrupalDayForm;
+
 /**
  * Provides a 'Example: empty block' block.
  *
@@ -23,8 +25,11 @@ class DrupalDayBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
+
+    $form = \Drupal::formBuilder()->getForm('Drupal\hello_world\Form\DrupalDayForm');
+
     return array(
-      '#markup' => $this->t('Hello, DrupalDay!'),
+      '#markup' => render($form),
     );
   }
 
