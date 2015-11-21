@@ -45,7 +45,7 @@ class DrupalDayForm extends FormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     // Validate.
-    if (strlen($form_state->getValue('name') < 2)) {
+    if (strlen($form_state->getValue('name')) < 2) {
       $form_state->setErrorByName('name', $this->t("Validation error"));
     }
   }
