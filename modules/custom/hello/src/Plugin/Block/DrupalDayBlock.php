@@ -9,7 +9,6 @@ namespace Drupal\hello_world\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 
-use Drupal\hello_world\DrupalDayForm;
 
 /**
  * Provides a 'Example: empty block' block.
