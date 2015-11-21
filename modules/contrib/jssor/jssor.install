@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the jssor module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function jssor_requirements($phase) {
+  $requirements = array();
+
+  // We do not do this check during the 'install' phase as the libraries API
+  // functions will not always be available.
+  if ($phase == 'runtime') {
+
+    // Get locally installed library details.
+    $requirements['jssor'] = array(
+      'title' => t('Jssor Javascript Library'),
+    );
+    if ($library['installed']) {
+      $requirements['jssor']['value'] = $library['version'];
+      $requirements['jssor']['severity'] = REQUIREMENT_INFO;
+    }
+    else {
+      $requirements['jssor']['value'] = $library['error'];
+      $requirements['jssor']['description'] = $library['error message'];
+      $requirements['jssor']['severity'] = REQUIREMENT_ERROR;
+    }
+
+    $requirements['color_gd']['title'] = t('GD library PNG support');
+  }
+
+  return $requirements;
+}
